@@ -178,3 +178,9 @@ extension EaseXTextStyle on Text {
         style: (style ?? const TextStyle()).copyWith(fontSize: fontSize),
       );
 }
+
+/// ⏰ Duration Extension
+extension DelayExtension on Duration {
+  /// Delays execution for the given duration
+  Future<void> get delay => Future.delayed(this);
+}

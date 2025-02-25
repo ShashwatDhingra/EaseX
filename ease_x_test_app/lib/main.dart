@@ -13,8 +13,8 @@ class EaseXExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: EaseXTheme.light,
-      darkTheme: EaseXTheme.dark,
+      theme: EaseXTheme.light, // EaseX Light Theme
+      darkTheme: EaseXTheme.dark, // EaseX Dark
       navigatorKey: EaseXLoader.navigatorKey, // Required for EaseXLoader
       home: const ExampleHomeScreen(), // Initial screen
     );
@@ -130,8 +130,8 @@ class _ExampleHomeScreenState extends State<ExampleHomeScreen> {
               // .italic(), // Applying predefined H1 text style
 
               // EaseXDuration Example
-              const Text("Delay: 1 Second [Click Me]").onTap(() async {
-                await Future.delayed(1.seconds); // Duration extension
+              const Text("Delay: 2 Second [Click Me]").onTap(() async {
+                await 2.seconds.delay;
                 "Showing Toast after delay".showSuccessToast();
               }), // Displaying short duration in milliseconds
 
@@ -161,7 +161,7 @@ class _ExampleHomeScreenState extends State<ExampleHomeScreen> {
               ElevatedButton(
                 onPressed: () async {
                   _toggleLoader();
-                  await Future.delayed(2.seconds);
+                  await 2.seconds.delay;
                   _toggleLoader();
                 },
                 child: const Text("Show Loader"),
@@ -203,12 +203,10 @@ class SecondScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text("Second Screen")), // App bar with title
       body: Center(
-        child: ElevatedButton(
-          onPressed: () =>
-              context.pop(), // Navigates back to the previous screen
-          child: const Text("Go Back"),
-        ),
-      ),
+          child: ElevatedButton(
+        onPressed: () => context.pop(), // Navigates back to the previous screen
+        child: const Text("Go Back"),
+      )),
     );
   }
 }
