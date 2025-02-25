@@ -1,11 +1,11 @@
-import 'package:ease_x/ease_x.dart';
 import 'package:flutter/material.dart';
+import 'package:ease_x/ease_x.dart';
 
 void main() {
   runApp(const EaseXExampleApp());
 }
 
-/// The main app widuget
+/// The main app widget
 class EaseXExampleApp extends StatelessWidget {
   const EaseXExampleApp({super.key});
 
@@ -13,6 +13,8 @@ class EaseXExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: EaseXTheme.light,
+      darkTheme: EaseXTheme.dark,
       navigatorKey: EaseXLoader.navigatorKey, // Required for EaseXLoader
       home: const ExampleHomeScreen(), // Initial screen
     );
@@ -33,6 +35,7 @@ class _ExampleHomeScreenState extends State<ExampleHomeScreen> {
   String internetStatus = "Checking..."; // Stores internet connection status
   bool isLoading = false; // Tracks whether the loader is visible
   bool showExtraContent = false; // Controls visibility for showIf example
+  final formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -59,99 +62,135 @@ class _ExampleHomeScreenState extends State<ExampleHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('EaseX Example')), // App bar with title
-      body: Padding(
-        padding: const EdgeInsets.all(
-            Sizes.md), // Padding using EaseX predefined sizes
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Display device and network information using EaseXDevice utilities
-            Text('Screen Width: ${EaseXDevice.getScreenWidth(context)}'),
-            Text('Keyboard Visible: ${EaseXDevice.isKeyboardVisible(context)}'),
-            Text(
-                'Device: ${EaseXDevice.isAndroid ? "Android" : EaseXDevice.isIOS ? "iOS" : "Unknown"}'),
-            Text(
-              'Internet: $internetStatus',
-              style: TextStyle(
-                  color: internetStatus == "Connected"
-                      ? Colors.green
-                      : Colors.red),
-            ),
+        appBar:
+            AppBar(title: const Text('EaseX Example')), // App bar with title
+        body: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // Display device and network information using EaseXDevice utilities
+              Text('Screen Width: ${EaseXDevice.getScreenWidth(context)}')
+                  .bold()
+                  .size(20),
+              Text('Keyboard Visible: ${EaseXDevice.isKeyboardVisible(context)}')
+                  .bold()
+                  .size(20),
+              Text('Device: ${EaseXDevice.isAndroid ? "Android" : EaseXDevice.isIOS ? "iOS" : "Unknown"}')
+                  .bold()
+                  .size(20),
+              Text(
+                'Internet: $internetStatus',
+                style: TextStyle(
+                    color: internetStatus == "Connected"
+                        ? Colors.green
+                        : Colors.red),
+              )..bold().size(20),
 
-            // EaseXBox Example - Adds vertical spacing of 20 pixels
-            20.vBox,
+              // EaseXBox Example - Adds vertical spacing of 20 pixels
+              20.vBox,
 
-            // EaseX Navigation Example
-            ElevatedButton(
-              onPressed: () => context
-                  .push(const SecondScreen()), // Navigates to SecondScreen
-              child: const Text("Go to Second Screen"),
-            ),
+              // EaseX Navigation Example
+              ElevatedButton(
+                onPressed: () => context
+                    .push(const SecondScreen()), // Navigates to SecondScreen
+                child: const Text("Go to Second Screen"),
+              ),
 
-            // EaseXWidgetExtensions Examples
+              // EaseXWidgetExtensions Examples
 
-            // Hide keyboard when button is tapped
-            ElevatedButton(
-              onPressed: () => EaseXDevice.hideKeyboard(context),
-              child: const Text("Hide Keyboard"),
-            )
-                .pad(all: Sizes.md)
-                .centered(), // Adds padding and centers the button
+              // Hide keyboard when button is tapped
+              ElevatedButton(
+                onPressed: () => EaseXDevice.hideKeyboard(context),
+                child: const Text("Hide Keyboard"),
+              )
+                  .pad(all: Sizes.md)
+                  .centered(), // Adds padding and centers the button
 
-            // Show toast message on button tap
-            ElevatedButton(
-              onPressed: () => "Hello from EaseXToast".showToast(),
-              child: const Text("Show Toast"),
-            ).onTap(() => print("Button tapped")), // Adds onTap extension
+              // Show toast message on button tap
+              ElevatedButton(
+                onPressed: () => "Hello from EaseXToast".showBlackToast(),
+                child: const Text("Show Toast"),
+              ),
 
-            // Adjusting widget opacity
-            const Icon(Icons.star, size: 50).opacity(0.5),
+              18.vBox,
 
-            // Rotating a widget
-            const Text("Rotated Text").rotate(15),
+              // Rotating a widget
+              const Text("Rotated Text").rotate(50),
 
-            // EaseXTextStyle Example
-            const Text("Styled Text")
-                .bold()
-                .italic(), // Applying predefined H1 text style
+              18.vBox,
 
-            // EaseXDuration Example
-            Text("Delay: 1 Second").onTap(() async {
-              await Future.delayed(1.seconds);
-              "Showing Toast after delay".showSuccessToast();
-            }), // Displaying short duration in milliseconds
+              // EaseXTextStyle Example
+              const Text("Styled Text")
+                  .bold()
+                  .colored(Colors.deepPurple.shade300)
+                  .italic()
+                  .underlined(),
+              // .bold()
+              // .italic(), // Applying predefined H1 text style
 
-            // EaseXValidator Example for email validation
-            TextFormField(
-              controller: _emailController,
-              decoration: const InputDecoration(labelText: "Email"),
-              validator: EaseXValidator.validateEmail, // Validates email input
-            ),
+              // EaseXDuration Example
+              const Text("Delay: 1 Second [Click Me]").onTap(() async {
+                await Future.delayed(1.seconds); // Duration extension
+                "Showing Toast after delay".showSuccessToast();
+              }), // Displaying short duration in milliseconds
 
-            // EaseXLoader Example - Show and hide loader
-            ElevatedButton(
-              onPressed: _toggleLoader,
-              child: Text(isLoading ? "Hide Loader" : "Show Loader"),
-            ),
+              // EaseXValidator Example for email validation
+              Row(
+                children: [
+                  TextFormField(
+                    controller: _emailController,
+                    decoration: const InputDecoration(labelText: "Email"),
+                    validator:
+                        EaseXValidator.validateEmail, // Validates email input
+                  ).expanded(
+                      flex:
+                          3), // Use .expanded() on any Widget | Shortcut for wrapping with Expanded()
+                  ElevatedButton(
+                          onPressed: () {
+                            formKey.currentState!.validate();
+                          },
+                          child: const Text('Validate'))
+                      .expanded(flex: 2)
+                ],
+              ),
 
-            // EaseXWidgetExtensions: showIf Example
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  showExtraContent = !showExtraContent;
-                });
-              },
-              child: const Text("Toggle Extra Content"),
-            ),
+              12.vBox,
 
-            // Show extra content only if showExtraContent is true
-            const Text("This is extra content!").showIf(
-                showExtraContent), // showIf will conditionally display the widget
-          ],
-        ),
-      ),
-    );
+              // EaseXLoader Example - Show and hide loader
+              ElevatedButton(
+                onPressed: () async {
+                  _toggleLoader();
+                  await Future.delayed(2.seconds);
+                  _toggleLoader();
+                },
+                child: const Text("Show Loader"),
+              ),
+
+              12.vBox,
+
+              // EaseXWidgetExtensions: showIf Example
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    showExtraContent = !showExtraContent;
+                  });
+                },
+                child: const Text("Toggle Extra Content"),
+              ),
+
+              12.vBox,
+
+              // Show extra content only if showExtraContent is true
+              const Text(
+                      "There is so much more to explore! Check out the package code for a deep dive into all available features.")
+                  .bold()
+                  .showIf(
+                      showExtraContent), // showIf will conditionally display the widget
+            ],
+          ).pad(all: 24),
+        ) // Ease Padding to any Widget,
+        );
   }
 }
 
