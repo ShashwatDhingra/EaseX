@@ -1,7 +1,8 @@
 name: ease_x
 description: "A set of useful Flutter extensions for UI, navigation, theming, and utilities."
 version: 1.0.0
-homepage:
+repository: https://github.com/ShashwatDhingra/EaseX
+homepage: https://github.com/ShashwatDhingra/EaseX
 
 environment:
   sdk: '>=3.4.4 <4.0.0'
