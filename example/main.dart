@@ -13,8 +13,8 @@ class EaseXExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: EaseXTheme.light,
-      darkTheme: EaseXTheme.dark,
+      theme: EaseXTheme.light, // EaseX Light Theme
+      darkTheme: EaseXTheme.dark, // EaseX Dark
       navigatorKey: EaseXLoader.navigatorKey, // Required for EaseXLoader
       home: const ExampleHomeScreen(), // Initial screen
     );

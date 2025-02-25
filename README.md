@@ -1,96 +1,123 @@
-# SimpleX - Simplify Flutter Development
 
-SimpleX is a feature-rich Flutter package that enhances development by providing a collection of powerful extensions and utilities. It simplifies UI styling, navigation, validation, device information handling, and much more.
+# 🚀 EaseX - Simplify Flutter Development 🏗️  
 
-## Features
+EaseX is a **feature-rich** Flutter package that enhances development by providing a collection of **powerful extensions and utilities**. It simplifies **UI styling**, **navigation**, **validation**, **device information handling**, and much more. ✨  
 
-✅ **Text Styling Extensions** - Easily apply `bold`, `italic`, `underlined`, `colored`, and `size` styles to `Text` widgets.
+---
 
-✅ **Navigation Simplifications** - Use `.push()` and `.pop()` to navigate between screens effortlessly.
+![EaseX Animation](https://imgur.com/a/7WkLiRN.gif)
 
-✅ **Device Utilities** - Get device information like screen size, platform type (Android/iOS), and keyboard visibility.
 
-✅ **Validation Helpers** - Built-in validators for common form inputs such as email, phone number, and password strength.
+## 🎯 Features  
 
-✅ **Toast Notifications** - Display toast messages easily using `showBlackToast()` and `showSuccessToast()`.
+✅ **Text Styling Extensions** 🖌️ - Easily apply `bold`, `italic`, `underlined`, `colored`, and `size` styles to `Text` widgets.  
 
-✅ **Spacing & Padding Extensions** - Use `.vBox` and `.pad()` to manage spacing between widgets.
+✅ **Navigation Simplifications** 🧭 - Use `.push()` and `.pop()` to navigate between screens effortlessly.  
 
-✅ **Keyboard Management** - Hide the keyboard programmatically with `SimpleXDevice.hideKeyboard()`.
+✅ **Device Utilities** 📱 - Get device information like screen size, platform type (Android/iOS), and keyboard visibility.  
 
-✅ **Rotation & Visibility** - Rotate widgets with `.rotate()` and conditionally show them with `.showIf()`.
+✅ **Validation Helpers** ✅ - Built-in validators for common form inputs such as email, phone number, and password strength.  
 
-✅ **Asynchronous Handling** - Delay actions using `Future.delayed(1.seconds)` instead of manually defining durations.
+✅ **Toast Notifications** 🔔 - Display toast messages easily using `showToast()`, `showSuccessToast()`, etc.  
 
-✅ **Loading Indicator** - Show and hide a global loader using `SimpleXLoader.show()` and `SimpleXLoader.hide()`.
+✅ **Spacing & Padding Extensions** 📏 - Use `.vBox` and `.pad()` to manage spacing between widgets.  
 
-✅ **Expandable Widgets** - Wrap widgets in `.expanded()` for better layout management.
+✅ **Keyboard Management** ⌨️ - Hide the keyboard programmatically with `EaseXDevice.hideKeyboard()`.  
 
-And much more! Explore the complete package to discover all utilities. 📦
+✅ **Rotation & Visibility** 🔄 - Rotate widgets with `.rotate()` and conditionally show them with `.showIf()`.  
 
-## Getting Started
+✅ **Asynchronous Handling** ⏳ - Delay actions using `Future.delayed(1.seconds)` instead of manually defining durations.  
 
-1. **Install the package:**
-   ```sh
-   flutter pub add simple_x
-   ```
-2. **Import it into your project:**
-   ```dart
-   import 'package:simple_x/simple_x.dart';
-   ```
+✅ **Loading Indicator** 🔃 - Show and hide a global loader using `EaseXLoader.show()` and `EaseXLoader.hide()`.  
 
-## Usage
+✅ **Expandable Widgets** 📐 - Wrap widgets in `.expanded()` for better layout management.  
 
-### Text Styling Extensions
+And much more! 🚀 Explore the complete package to discover all utilities. 📦  
+
+---
+
+## 🚀 Getting Started  
+
+### 📥 Install the package  
+```sh
+flutter pub add ease_x
+```  
+
+### 📌 Import it into your project  
 ```dart
-Text('Bold Text').bold();
-Text('Colored Text').colored(Colors.deepPurple);
-Text('Sized Text').size(20);
-Text('Underlined Text').underlined();
+import 'package:ease_x/ease_x.dart';
+```  
+
+---
+
+## ⚡ Usage  
+
+### 🎨 Text Styling Extensions  
+```dart
+Text('Bold Text').bold(); // 🔠 Make text bold
+Text('Colored Text').colored(Colors.deepPurple); // 🎨 Apply color to text
+Text('Sized Text').size(20); // 🔡 Change text size
+Text('Underlined Text').underlined(); // ✍️ Underline text
 ```
 
-### Navigation Simplification
+### 🧭 Navigation Simplification  
 ```dart
-context.push(SecondScreen()); // Navigate to another screen
-context.pop(); // Go back
+context.push(SecondScreen()); // 🚀 Navigate to another screen
+context.pop(); // 🔙 Go back to the previous screen
 ```
 
-### Device Utilities
+### 📱 Device Utilities  
 ```dart
-bool hasInternet = await SimpleXDevice.hasInternetConnection();
-double screenWidth = SimpleXDevice.getScreenWidth(context);
+bool hasInternet = await EaseXDevice.hasInternetConnection(); // 🌍 Check internet connection
+double screenWidth = EaseXDevice.getScreenWidth(context); // 📏 Get screen width
 ```
 
-### Toast Messages
+### 🎨 Light and Dark Theme  
 ```dart
-"Hello from SimpleX!".showBlackToast();
-"Success!".showSuccessToast();
+MaterialApp(
+  debugShowCheckedModeBanner: false,
+  theme: EaseXTheme.light, // 🌞 Light Theme
+  darkTheme: EaseXTheme.dark, // 🌙 Dark Theme
+  navigatorKey: EaseXLoader.navigatorKey, // 🔄 Required for EaseXLoader
+  home: const ExampleHomeScreen(), // 🏠 Initial Screen
+);
 ```
 
-### Show/Hide Loader
+### 🔔 Toast Messages  
 ```dart
-SimpleXLoader.show();
+"Hello from EaseX!".showBlackToast(); // 📢 Show black toast
+"Success!".showSuccessToast(); // ✅ Show success toast
+```
+
+### ⏳ Show/Hide Loader  
+```dart
+EaseXLoader.show(); // 🔄 Show loading indicator
 await Future.delayed(2.seconds);
-SimpleXLoader.hide();
+EaseXLoader.hide(); // ❌ Hide loader
 ```
 
-### Conditional Visibility
+### 👁️ Conditional Visibility  
 ```dart
-Text('Visible Text').showIf(condition == true);
+Text('Visible Text').showIf(condition == true); // 👀 Show text based on condition
 ```
 
-## Additional Information
-SimpleX is designed to make Flutter development easier and faster by reducing boilerplate code. There is **so much more** to explore! Check out the **package code** for a deep dive into all available features.
+---
 
-Happy coding! 🚀
+## ℹ️ Additional Information  
+EaseX is designed to **make Flutter development easier and faster** by reducing **boilerplate code**. 🚀  
 
+There is **so much more** to explore! Check out the **package code** for a deep dive into all available features.  
 
+Happy coding! 🎉🔥  
 
-## Contributors  
+---
+
+## 👨‍💻 Contributors  
 
 This package is actively maintained by:  
 
-<table style="border: none; border-collapse: collapse; margin-left: 18px;">  <tr style="border: none;">
+<table style="border: none; border-collapse: collapse; margin-left: 18px;">  
+  <tr style="border: none;">
     <td align="center" width="60" style="border: none; padding: 0;">
       <img src="https://media.licdn.com/dms/image/v2/D4D03AQGssdGx3xV14Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1690176959048?e=1746057600&v=beta&t=YdgkWknRB3Tja4gMSqVUoUssoBU8LIETZXzSLxAMbig" width="45" height="45" style="border-radius: 50%;" />
       <br>
@@ -102,8 +129,10 @@ This package is actively maintained by:
       <b><a href="https://www.linkedin.com/in/ajjujaihind/">Ajay</a></b>
     </td>
   </tr>
-</table>
+</table>  
 
+📬 **Feel free to connect with us on LinkedIn!** 🚀  
 
+---
 
-Feel free to connect with us on LinkedIn! 🚀  
+Let me know if you need any modifications! 🚀🔥
