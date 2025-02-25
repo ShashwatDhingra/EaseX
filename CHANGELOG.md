@@ -1,3 +1,7 @@
+## 1.1.1
+
+* Minor Fix
+
 ## 1.1.0
 
 * Added support for dark and light themes.

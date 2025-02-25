@@ -5,7 +5,7 @@ EaseX is a **feature-rich** Flutter package that enhances development by providi
 
 ---
 
-![EaseX Animation](https://imgur.com/eWTRg6I.gif)
+![EaseX Animation](https://imgur.com/AZ2pPHh.gif)
 
 
 ## 🎯 Features  
