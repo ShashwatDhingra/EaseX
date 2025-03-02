@@ -30,7 +30,9 @@ EaseX is a **feature-rich** Flutter package that enhances development by providi
 
 ✅ **Loading Indicator** 🔃 - Show and hide a global loader using `EaseXLoader.show()` and `EaseXLoader.hide()`.  
 
-✅ **Expandable Widgets** 📐 - Wrap widgets in `.expanded()` for better layout management.  
+✅ **Expandable Widgets** 📐 - Wrap widgets in `.expanded()` for better layout management. 
+
+✅ **Smooth Alert Dialog Animation** 🎭 - **Newly added animated alert dialogs with bounce effects!**  
 
 And much more! 🚀 Explore the complete package to discover all utilities. 📦  
 
@@ -95,6 +97,14 @@ EaseXLoader.show(); // 🔄 Show loading indicator
 await Future.delayed(2.seconds);
 EaseXLoader.hide(); // ❌ Hide loader
 ```
+
+### 🎭 **New! Animated Alert Dialogs**  
+```dart
+EaseXLoader.showAlert("This is an info alert!"); // ℹ️ Show an info alert
+EaseXLoader.showErrorAlert("Oops! Something went wrong."); // ❌ Show an error alert
+EaseXLoader.showSuccessAlert(); // ✅ Show a success alert
+```
+
 
 ### 👁️ Conditional Visibility  
 ```dart

@@ -1,3 +1,7 @@
+## 1.2.0
+
+* Add Alert Boxes.
+
 ## 1.1.3
 
 * Minor Fix

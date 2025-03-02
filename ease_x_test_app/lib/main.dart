@@ -179,6 +179,17 @@ class _ExampleHomeScreenState extends State<ExampleHomeScreen> {
                 child: const Text("Toggle Extra Content"),
               ),
 
+              ElevatedButton(
+                onPressed: () async {
+                  EaseXLoader.showSuccessAlert(
+                      title: 'Thanks from EaseX',
+                      message: 'Hope you Liked it.');
+                  await 3.seconds.delay;
+                  EaseXLoader.dismissAlert();
+                },
+                child: const Text('Show Alert'),
+              ),
+
               12.vBox,
 
               // Show extra content only if showExtraContent is true
