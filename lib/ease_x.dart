@@ -8,3 +8,4 @@ export 'package:ease_x/utils/ease_x_device.dart';
 export 'package:ease_x/utils/ease_x_loader.dart';
 export 'package:ease_x/utils/size.dart';
 export 'package:ease_x/utils/ease_x_theme.dart';
+export 'package:ease_x/utils/ease_x_share.dart';

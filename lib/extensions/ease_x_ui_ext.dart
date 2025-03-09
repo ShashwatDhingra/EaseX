@@ -4,8 +4,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 /// 🛠️ EaseX Spacing Extensions
 extension EaseXBox on num {
-  SizedBox get hBox => SizedBox(width: toDouble());
-  SizedBox get vBox => SizedBox(height: toDouble());
+  SizedBox get hBox => SizedBox(width: toDouble()); // Horizontal Box
+  SizedBox get vBox => SizedBox(height: toDouble()); // Vertical Box
 }
 
 /// 🍞 Toast Messages

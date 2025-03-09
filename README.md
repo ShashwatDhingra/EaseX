@@ -32,7 +32,9 @@ EaseX is a **feature-rich** Flutter package that enhances development by providi
 
 ✅ **Expandable Widgets** 📐 - Wrap widgets in `.expanded()` for better layout management. 
 
-✅ **Smooth Alert Dialog Animation** 🎭 - **Newly added animated alert dialogs with bounce effects!**  
+✅ **Smooth Alert Dialog Animation** 🎭 - Animated alert dialogs with bounce effects!
+
+✅ **Sharing Made Easy with EaseXShare Utils** 🎭 - Share text, images, videos, pdf and etc... files easily using EaseXShare Utils.
 
 And much more! 🚀 Explore the complete package to discover all utilities. 📦  
 
@@ -98,11 +100,19 @@ await Future.delayed(2.seconds);
 EaseXLoader.hide(); // ❌ Hide loader
 ```
 
-### 🎭 **New! Animated Alert Dialogs**  
+### 🎭 **Animated Alert Dialogs**  
 ```dart
 EaseXLoader.showAlert("This is an info alert!"); // ℹ️ Show an info alert
 EaseXLoader.showErrorAlert("Oops! Something went wrong."); // ❌ Show an error alert
 EaseXLoader.showSuccessAlert(); // ✅ Show a success alert
+```
+
+
+### 🔗 **Share Utils
+```dart
+EaseXShare.shareSingleImage(imageFile, text: "Sample Text");
+EaseXShare.shareFile(file);
+EaseXShare.openWhatsAppChat('+91', '8920119443',message: "Flutter Developer.");
 ```
 
 

@@ -1,3 +1,7 @@
+## 1.3.0
+
+* Add Sharing Utils.
+
 ## 1.2.0
 
 * Add Alert Boxes.
