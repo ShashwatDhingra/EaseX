@@ -36,6 +36,13 @@ EaseX is a **feature-rich** Flutter package that enhances development by providi
 
 ✅ **Sharing Made Easy with EaseXShare Utils** 🎭 - Share text, images, videos, pdf and etc... files easily using EaseXShare Utils.
 
+## 🆕 New Features in v1.4.0
+
+✅ **EaseXMedia** - Powerful media picking utilities
+
+✅ **EaseXStorage** - Simple key-value storage
+
+
 And much more! 🚀 Explore the complete package to discover all utilities. 📦  
 
 ---
@@ -100,7 +107,7 @@ await Future.delayed(2.seconds);
 EaseXLoader.hide(); // ❌ Hide loader
 ```
 
-### 🎭 **Animated Alert Dialogs**  
+### 🎭 Animated Alert Dialogs**  
 ```dart
 EaseXLoader.showAlert("This is an info alert!"); // ℹ️ Show an info alert
 EaseXLoader.showErrorAlert("Oops! Something went wrong."); // ❌ Show an error alert
@@ -108,7 +115,7 @@ EaseXLoader.showSuccessAlert(); // ✅ Show a success alert
 ```
 
 
-### 🔗 **Share Utils
+### 🔗 Share Utils
 ```dart
 EaseXShare.shareSingleImage(imageFile, text: "Sample Text");
 EaseXShare.shareFile(file);
@@ -120,6 +127,31 @@ EaseXShare.openWhatsAppChat('+91', '8920119443',message: "Flutter Developer.");
 ```dart
 Text('Visible Text').showIf(condition == true); // 👀 Show text based on condition
 ```
+
+
+### 🖼️ Media Utilities
+```dart
+// Pick single image
+final image = await EaseXMedia.pickImage();
+// Pick video
+final video = await EaseXMedia.pickVideo();
+```
+
+### EaseX Storage
+```dart
+// Initialize (call once)
+await EaseXStorage.init();
+
+// Save data
+await EaseXStorage.setString('token', 'abc123');
+
+// Read data
+final token = EaseXStorage.getString('token');
+
+// Remove data
+await EaseXStorage.remove('token');
+```
+
 
 ---
 

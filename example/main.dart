@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:ease_x/ease_x.dart';
 import 'package:image_picker/image_picker.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Required for EaseXStorage.init()
+  await EaseXStorage.init(); // Initialize storage
   runApp(const EaseXExampleApp());
 }
 
@@ -60,6 +62,40 @@ class _ExampleHomeScreenState extends State<ExampleHomeScreen> {
       isLoading = !isLoading;
     });
     isLoading ? EaseXLoader.show() : EaseXLoader.hide();
+  }
+
+  // Variables for images, video and files to show example of EaseXMedia
+  File? _pickedImage;
+  File? _pickedVideo;
+  File? _pickedFile;
+  List<File>? _pickedMultipleFiles;
+
+  // Storage Demo Variables
+  final TextEditingController _storageKeyController = TextEditingController();
+  final TextEditingController _storageValueController = TextEditingController();
+  String? _storedValue;
+
+  // ========================
+  // 🗄️ EaseXStorage Examples
+  // ========================
+  Future<void> _loadStoredValue() async {
+    final value = EaseXStorage.getString(_storageKeyController.text);
+    setState(() => _storedValue = value);
+  }
+
+  Future<void> _saveToStorage() async {
+    if (_storageKeyController.text.isEmpty) return;
+    await EaseXStorage.setString(
+      _storageKeyController.text,
+      _storageValueController.text,
+    );
+    _loadStoredValue(); // Refresh displayed value
+    "Saved successfully!".showSuccessToast();
+  }
+
+  Future<void> _clearStorage() async {
+    await EaseXStorage.remove(_storageKeyController.text);
+    _loadStoredValue();
   }
 
   @override
@@ -241,8 +277,7 @@ class _ExampleHomeScreenState extends State<ExampleHomeScreen> {
                       if (image.isNotEmpty) {
                         final images =
                             image.map((file) => File(file.path)).toList();
-                        EaseXShare.shareMultipleImages(images,
-                            text: "Multiple image sharing");
+                        EaseXShare.shareMultipleImages(images, text: "Hello");
                       }
                     },
                     child: const Text("Share Multiple Image"),
@@ -281,11 +316,139 @@ class _ExampleHomeScreenState extends State<ExampleHomeScreen> {
                     },
                     child: const Text("Share File"),
                   )
-                ])
+                ]),
+                // ========================
+                // 🗄️ Storage Demo Section
+                // ========================
+                const Divider(),
+                const Text('Storage Demo',
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                16.vBox,
+
+                // Key-Value Input
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        controller: _storageKeyController,
+                        decoration:
+                            const InputDecoration(labelText: 'Storage Key'),
+                      ),
+                    ),
+                    8.hBox,
+                    Expanded(
+                      child: TextFormField(
+                        controller: _storageValueController,
+                        decoration: const InputDecoration(labelText: 'Value'),
+                      ),
+                    ),
+                  ],
+                ),
+                12.vBox,
+
+                // Action Buttons
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: _saveToStorage,
+                      child: const Text('Save'),
+                    ).expanded(),
+                    8.hBox,
+                    ElevatedButton(
+                      onPressed: _clearStorage,
+                      child: const Text('Clear'),
+                    ).expanded(),
+                  ],
+                ),
+                12.vBox,
+
+                // Display Stored Value
+                Text(
+                  _storedValue != null
+                      ? 'Stored Value: $_storedValue'
+                      : 'No value stored',
+                  style: const TextStyle(fontSize: 16),
+                ),
+
+                // ========================
+                // 🖼️ Media Picker Section
+                // ========================
+                const Divider(),
+                const Text('Media Picking',
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                16.vBox,
+
+                // Image Picker
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () async {
+                        final image = await EaseXMedia.pickImage();
+                        setState(() => _pickedImage = image);
+                      },
+                      child: const Text('Pick Image'),
+                    ).expanded(),
+                    if (_pickedImage != null)
+                      Image.file(_pickedImage!, width: 60, height: 60)
+                          .pad(left: 8),
+                  ],
+                ),
+                8.vBox,
+
+                // Video Picker
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () async {
+                        final video = await EaseXMedia.pickVideo();
+                        setState(() => _pickedVideo = video);
+                      },
+                      child: const Text('Pick Video'),
+                    ).expanded(),
+                    if (_pickedVideo != null)
+                      const Icon(Icons.videocam, size: 30).pad(left: 8),
+                  ],
+                ),
+                8.vBox,
+
+                // File Picker
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () async {
+                        final file = await EaseXMedia.pickFile(
+                          allowedExtensions: ['pdf', 'docx'],
+                          maxSizeInBytes: 5 * 1024 * 1024,
+                        );
+                        setState(() => _pickedFile = file);
+                      },
+                      child: const Text('Pick File'),
+                    ).expanded(),
+                    if (_pickedFile != null)
+                      const Icon(Icons.insert_drive_file, size: 30)
+                          .pad(left: 8),
+                  ],
+                ),
+                8.vBox,
+
+                // Multiple Files
+                ElevatedButton(
+                  onPressed: () async {
+                    final files = await EaseXMedia.pickMultipleFiles();
+                    setState(() => _pickedMultipleFiles = files);
+                  },
+                  child: const Text('Pick Multiple Files'),
+                ),
+                if (_pickedMultipleFiles != null)
+                  Text('Selected: ${_pickedMultipleFiles!.length} files')
+                      .pad(top: 8),
               ],
-            ).pad(all: 24), // Ease Padding to any Widget,
+            ).pad(all: 24),
           ),
-        ));
+        ) // Ease Padding to any Widget,
+        );
   }
 }
 
