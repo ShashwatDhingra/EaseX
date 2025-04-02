@@ -137,7 +137,7 @@ final image = await EaseXMedia.pickImage();
 final video = await EaseXMedia.pickVideo();
 ```
 
-### EaseX Storage
+### 💾 EaseX Storage
 ```dart
 // Initialize (call once)
 await EaseXStorage.init();
