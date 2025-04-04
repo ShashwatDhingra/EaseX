@@ -5,7 +5,7 @@ repository: https://github.com/ShashwatDhingra/EaseX
 homepage: https://pub.dev/packages/ease_x
 
 environment:
-  sdk: '>=3.4.4 <4.0.0'
+  sdk: '>=3.5.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
@@ -13,11 +13,13 @@ dependencies:
     sdk: flutter
   fluttertoast: ^8.2.12
   url_launcher: ^6.2.5
-  share_plus: ^7.2.1
-  mime: ^1.0.4
+  share_plus: ^10.1.4
+  mime: ^2.0.0
   image_picker: ^1.1.2
-  shared_preferences: ^2.3.3
+  shared_preferences: ^2.5.1
   file_picker: ^8.3.2
+  flutter_file_saver: ^0.8.1
+
 
 dev_dependencies:
   flutter_test:
