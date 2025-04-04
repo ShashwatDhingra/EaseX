@@ -1,7 +1,9 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:ease_x/ease_x.dart';
+import 'package:ease_x/utils/ease_x_file_saver.dart';
+import 'package:flutter/material.dart';
+
 import 'package:image_picker/image_picker.dart';
 
 void main() async {
@@ -444,6 +446,22 @@ class _ExampleHomeScreenState extends State<ExampleHomeScreen> {
                 if (_pickedMultipleFiles != null)
                   Text('Selected: ${_pickedMultipleFiles!.length} files')
                       .pad(top: 8),
+
+                // ==============
+                // 🖼️ File Saver
+                // ===============
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                      onPressed: () async {
+                        await EaseFileSaver.saveFile(
+                          fileName: 'note',
+                          type: FileType.jpg,
+                          content: 'This is a sample text file.',
+                        );
+                      },
+                      child: const Text("Save File")),
+                ),
               ],
             ).pad(all: 24),
           ),

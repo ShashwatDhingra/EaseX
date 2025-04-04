@@ -71,7 +71,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.3.0"
+    version: "1.4.1"
   fake_async:
     dependency: transitive
     description:
@@ -149,6 +149,54 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_file_manager_android:
+    dependency: transitive
+    description:
+      name: flutter_file_manager_android
+      sha256: a00ed550fb6284fb7da392de5c95e4d98e21754df865e81609a7ce2553dbec6d
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.1"
+  flutter_file_manager_ios:
+    dependency: transitive
+    description:
+      name: flutter_file_manager_ios
+      sha256: "5a03dad9928cc9558b7564b6223a6d5c85add27a38605ccd5f95284f1306d5fd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
+  flutter_file_manager_macos:
+    dependency: transitive
+    description:
+      name: flutter_file_manager_macos
+      sha256: "75043db36be0e02c365fb25dfd73fa467882d5eae0fad76d2f95321600a90b4d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
+  flutter_file_manager_platform_interface:
+    dependency: transitive
+    description:
+      name: flutter_file_manager_platform_interface
+      sha256: "61246685aef6f3b65139b28a201ca025d67d623b6be3c21236bfd7dba581090a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
+  flutter_file_manager_web:
+    dependency: transitive
+    description:
+      name: flutter_file_manager_web
+      sha256: f418785eb4d62344c4a020359fc7021cc866a91a2fe2d00763f304fdbd45bab3
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
+  flutter_file_saver:
+    dependency: transitive
+    description:
+      name: flutter_file_saver
+      sha256: fcc82e5b8c7619a450565b62daeee12bcc25bbae6d78d51a98460c3f3ab9403a
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.2"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -235,10 +283,10 @@ packages:
     dependency: transitive
     description:
       name: image_picker_linux
-      sha256: "4ed1d9bb36f7cd60aa6e6cd479779cc56a4cb4e4de8f49d487b1aaad831300fa"
+      sha256: "34a65f6740df08bbbeb0a1abd8e6d32107941fd4868f67a507b25601651022c9"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.1+1"
+    version: "0.2.1+2"
   image_picker_macos:
     dependency: transitive
     description:
@@ -560,10 +608,10 @@ packages:
     dependency: transitive
     description:
       name: url_launcher_ios
-      sha256: "16a513b6c12bb419304e72ea0ae2ab4fed569920d1c7cb850263fe3acc824626"
+      sha256: "7f2022359d4c099eea7df3fdf739f7d3d3b9faf3166fb1dd390775176e0b76cb"
       url: "https://pub.dev"
     source: hosted
-    version: "6.3.2"
+    version: "6.3.3"
   url_launcher_linux:
     dependency: transitive
     description:
@@ -632,10 +680,10 @@ packages:
     dependency: transitive
     description:
       name: web
-      sha256: cd3543bd5798f6ad290ea73d210f423502e71900302dde696f8bff84bf89a1cb
+      sha256: "868d88a33d8a87b18ffc05f9f030ba328ffefba92d6c127917a2ba740f9cfe4a"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.1.1"
   win32:
     dependency: transitive
     description:
