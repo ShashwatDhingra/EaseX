@@ -5,7 +5,7 @@ EaseX is a **feature-rich** Flutter package that enhances development by providi
 
 ---
 
-![EaseX Animation](https://imgur.com/AZ2pPHh.gif)
+![EaseX Animation](https://raw.githubusercontent.com/ShashwatDhingra/Files/refs/heads/main/Logo-4-remix-ezgif.com-crop.gif)
 
 
 ## 🎯 Features  
@@ -36,12 +36,15 @@ EaseX is a **feature-rich** Flutter package that enhances development by providi
 
 ✅ **Sharing Made Easy with EaseXShare Utils** 🎭 - Share text, images, videos, pdf and etc... files easily using EaseXShare Utils.
 
-## 🆕 New Features in v1.4.0
-
 ✅ **EaseXMedia** - Powerful media picking utilities
 
 ✅ **EaseXStorage** - Simple key-value storage
 
+## 🆕 New Features in v1.5.0
+
+✅ **EaseFileSaver** - Save Dynamic Files in iOS and Android
+
+✅ **Shimmer Effect on Widgets** – Easily apply a shimmer effect to any widget using .shimmer()
 
 And much more! 🚀 Explore the complete package to discover all utilities. 📦  
 
@@ -152,6 +155,27 @@ final token = EaseXStorage.getString('token');
 await EaseXStorage.remove('token');
 ```
 
+## 🆕 New Features in v1.5.0
+
+### 💾 EaseX File Saver
+```dart
+await EaseXFileSaver.saveFile(
+fileName: 'note',
+type: FileType.text,
+content:
+'EaseX is an Utility package for helping Flutter Developers.',
+);
+```
+
+### ✨ Shimmer Effect
+```dart
+Container(
+width: 200,
+height: 120,
+decoration:
+BoxDecoration(borderRadius: BorderRadius.circular(12.0)),
+).shimmer().pad(all: 12.0)
+```
 
 ---
 

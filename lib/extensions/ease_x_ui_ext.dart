@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shimmer/shimmer.dart';
 
 /// 🛠️ EaseX Spacing Extensions
 extension EaseXBox on num {
@@ -146,6 +147,44 @@ extension EaseXWidgetExtensions on Widget {
 
   /// Show/Hide conditionally
   Widget showIf(bool condition) => condition ? this : const SizedBox.shrink();
+
+  /// Shimmer Effect
+  Widget shimmer({
+    Color baseColor = const Color(0xFFE0E0E0),
+    Color highlightColor = const Color(0xFFF5F5F5),
+    Duration period = const Duration(seconds: 2),
+    bool enabled = true,
+  }) {
+    if (this is Container) {
+      final container = this as Container;
+      final oldDecoration = container.decoration;
+
+      // Check if decoration exists and color is missing
+      if (oldDecoration is BoxDecoration && oldDecoration.color == null) {
+        return Shimmer.fromColors(
+          baseColor: baseColor,
+          highlightColor: highlightColor,
+          period: period,
+          enabled: enabled,
+          child: Container(
+            padding: container.padding,
+            margin: container.margin,
+            alignment: container.alignment,
+            decoration: oldDecoration.copyWith(color: Colors.grey.shade300),
+            child: this,
+          ),
+        );
+      }
+    }
+
+    return Shimmer.fromColors(
+      baseColor: baseColor,
+      highlightColor: highlightColor,
+      period: period,
+      enabled: enabled,
+      child: this,
+    );
+  }
 }
 
 /// 📝 EaseX Text Styling Extensions

@@ -1,48 +1,21 @@
-
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter_file_saver/flutter_file_saver.dart';
 
-class EaseFileSaver {
-  /// Saves a file with the given content into an appropriate folder based on extension.
-  ///
-  /// Parameters:
-  /// - `fileName`: The name of the file (e.g., 'document.txt', 'image.png').
-  /// - `content`: The content to save (as a String).
-  ///
-  /// Example:
-  /// ```dart
-  /// await EaseFileSaver.saveFile(
-  ///   fileName: 'hello.txt',
-  ///   content: 'Hello World!',
-  /// );
-  /// ```
-  /// 
-  /// 
-  /// 
-  /// 
-
-
-
-
+class EaseXFileSaver {
   static Future<void> saveFile({
     required String fileName,
-   required  FileType type,
-    required String content,
+    required FileType type,
+    required dynamic content,
   }) async {
-
     await FlutterFileSaver().writeFileAsString(
-      fileName: fileName+"."+type.toString(),
-      data: content, 
+      fileName: "$fileName.${type.name}",
+      data: content,
     );
   }
-
-
 }
 
-
-
-
 enum FileType {
+  text,
+  pdf,
   png,
   jpg,
   jpeg,
@@ -57,8 +30,5 @@ enum FileType {
   mp3,
   wav,
   aac,
-  ogg,        
-
-
-
+  ogg,
 }

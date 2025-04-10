@@ -11,3 +11,4 @@ export 'package:ease_x/utils/ease_x_theme.dart';
 export 'package:ease_x/utils/ease_x_share.dart';
 export 'package:ease_x/utils/ease_x_media.dart';
 export 'package:ease_x/utils/ease_x_storage.dart';
+export 'package:ease_x/utils/ease_x_file_saver.dart';

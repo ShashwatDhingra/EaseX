@@ -1,3 +1,7 @@
+## 1.5.0
+
+* Add EaseXFileSaver and Shimmer Effect for Widgets.
+
 ## 1.4.0
 
 * Add EaseXStorage and EaseXMedia.
