@@ -1,9 +1,10 @@
 import 'dart:io';
 
 import 'package:ease_x/ease_x.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:ease_x/time/ease_x_time_ago.dart';
+import 'package:ease_x/time/ease_x_time_builder.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'package:image_picker/image_picker.dart';
 
@@ -468,7 +469,29 @@ class _ExampleHomeScreenState extends State<ExampleHomeScreen> {
                   height: 120,
                   decoration:
                       BoxDecoration(borderRadius: BorderRadius.circular(12.0)),
-                ).shimmer().pad(all: 12.0)
+                ).shimmer().pad(all: 12.0),
+                // Human Readable time
+
+                const Text("Ease X Time Ago Example"),
+
+                Text(EaseXTimeAgo.format(
+                    DateTime.now().subtract(const Duration(minutes: 2)))),
+
+                const Text("Ease X Time Ago Example in Spanish"),
+                Text(
+                  EaseXTimeAgo.format(
+                    DateTime.now().subtract(const Duration(minutes: 30)),
+                    locale: 'es',
+                  ),
+                ),
+                const Text("Real time update time"),
+                EaseXTimeBuilder(
+                  date: DateTime.now().subtract(const Duration(seconds: 30)),
+                  builder: (value) => Text(value),
+                ),
+                const SizedBox(
+                  height: 200,
+                ),
               ],
             ).pad(all: 24),
           ),
